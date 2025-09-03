@@ -45,7 +45,7 @@ Row {
 
           NText {
             id: cpuUsageText
-            text: `${SystemStatService.cpuUsage}%`
+            text: `${SystemStatService.cpuUsage.toFixed(1)}%`.padEnd(5)
             font.family: Settings.data.ui.fontFixed
             font.pointSize: Style.fontSizeS * scaling
             font.weight: Style.fontWeightMedium
@@ -88,7 +88,7 @@ Row {
           }
 
           NText {
-            text: `${SystemStatService.memoryUsageGb}G`
+            text: `${SystemStatService.memoryUsageGb.toFixed(1)}G`.padEnd(5)
             font.family: Settings.data.ui.fontFixed
             font.pointSize: Style.fontSizeS * scaling
             font.weight: Style.fontWeightMedium
