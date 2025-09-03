@@ -12,8 +12,8 @@ Row {
 
   property ShellScreen screen
   property real scaling: 1.0
-  readonly property real minWidth: 160
-  readonly property real maxWidth: 400
+  readonly property real minWidth: 300
+  readonly property real maxWidth: 700
 
   anchors.verticalCenter: parent.verticalCenter
   spacing: Style.marginS * scaling
@@ -85,29 +85,29 @@ Row {
           id: titleText
 
           // For short titles, show full. For long titles, truncate and expand on hover
-          width: {
-            if (mouseArea.containsMouse) {
-              return Math.round(Math.min(fullTitleMetrics.contentWidth, root.maxWidth * scaling))
-            } else {
-              return Math.round(Math.min(fullTitleMetrics.contentWidth, root.minWidth * scaling))
-            }
-          }
+          // width: {
+          //   if (mouseArea.containsMouse) {
+          //     return Math.round(Math.min(fullTitleMetrics.contentWidth, root.maxWidth * scaling))
+          //   } else {
+          //     return Math.round(Math.min(fullTitleMetrics.contentWidth, root.minWidth * scaling))
+          //   }
+          // }
           horizontalAlignment: Text.AlignLeft
           text: getTitle()
           font.pointSize: Style.fontSizeS * scaling
           font.weight: Style.fontWeightMedium
-          elide: mouseArea.containsMouse ? Text.ElideNone : Text.ElideRight
+          // elide: mouseArea.containsMouse ? Text.ElideNone : Text.ElideRight
           anchors.verticalCenter: parent.verticalCenter
           verticalAlignment: Text.AlignVCenter
           color: Color.mSecondary
           clip: true
 
-          Behavior on width {
-            NumberAnimation {
-              duration: Style.animationSlow
-              easing.type: Easing.InOutCubic
-            }
-          }
+          // Behavior on width {
+          //   NumberAnimation {
+          //     duration: Style.animationSlow
+          //     easing.type: Easing.InOutCubic
+          //   }
+          // }
         }
       }
 
