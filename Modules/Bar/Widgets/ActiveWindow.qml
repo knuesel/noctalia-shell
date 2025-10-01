@@ -34,7 +34,7 @@ Item {
 
   // 6% of total width
   readonly property real minWidth: Math.max(1, screen.width * 0.06)
-  readonly property real maxWidth: minWidth * 2
+  readonly property real maxWidth: Math.max(1, screen.width * 0.3)
 
   readonly property string barPosition: Settings.data.bar.position
   readonly property bool isVertical: barPosition === "left" || barPosition === "right"
@@ -188,34 +188,34 @@ Item {
 
         NText {
           id: titleText
-          Layout.preferredWidth: {
-            try {
-              if (mouseArea.containsMouse) {
-                return Math.round(Math.min(fullTitleMetrics.contentWidth, root.maxWidth * scaling))
-              } else {
-                return Math.round(Math.min(fullTitleMetrics.contentWidth, 80 * scaling)) // Limited width for horizontal bars
-              }
-            } catch (e) {
-              Logger.warn("ActiveWindow", "Error calculating width:", e)
-              return 80 * scaling
-            }
-          }
+          // Layout.preferredWidth: {
+          //   try {
+          //     if (mouseArea.containsMouse) {
+          //       return Math.round(Math.min(fullTitleMetrics.contentWidth, root.maxWidth * scaling))
+          //     } else {
+          //       return Math.round(Math.min(fullTitleMetrics.contentWidth, 80 * scaling)) // Limited width for horizontal bars
+          //     }
+          //   } catch (e) {
+          //     Logger.warn("ActiveWindow", "Error calculating width:", e)
+          //     return 80 * scaling
+          //   }
+          // }
           Layout.alignment: Qt.AlignVCenter
           horizontalAlignment: Text.AlignLeft
           text: getTitle()
           font.pointSize: Style.fontSizeS * scaling
           font.weight: Style.fontWeightMedium
-          elide: mouseArea.containsMouse ? Text.ElideNone : Text.ElideRight
+          // elide: mouseArea.containsMouse ? Text.ElideNone : Text.ElideRight
           verticalAlignment: Text.AlignVCenter
           color: Color.mPrimary
           clip: true
 
-          Behavior on Layout.preferredWidth {
-            NumberAnimation {
-              duration: Style.animationSlow
-              easing.type: Easing.InOutCubic
-            }
-          }
+          // Behavior on Layout.preferredWidth {
+          //   NumberAnimation {
+          //     duration: Style.animationSlow
+          //     easing.type: Easing.InOutCubic
+          //   }
+          // }
         }
       }
 
