@@ -81,7 +81,7 @@ Rectangle {
         columnSpacing: Style.marginXXS * scaling
 
         NText {
-          text: isVertical ? `${Math.round(SystemStatService.cpuUsage)}%` : `${SystemStatService.cpuUsage}%`
+          text: isVertical ? `${Math.round(SystemStatService.cpuUsage)}%` : `${SystemStatService.cpuUsage.toFixed(1)}%`.padEnd(5)
           font.family: Settings.data.ui.fontFixed
           font.pointSize: textSize
           font.weight: Style.fontWeightMedium
@@ -120,7 +120,7 @@ Rectangle {
         columnSpacing: Style.marginXXS * scaling
 
         NText {
-          text: isVertical ? `${SystemStatService.cpuTemp}°` : `${SystemStatService.cpuTemp}°C`
+          text: isVertical ? `${SystemStatService.cpuTemp}°` : `${SystemStatService.cpuTemp}°C `
           font.family: Settings.data.ui.fontFixed
           font.pointSize: textSize
           font.weight: Style.fontWeightMedium
@@ -163,7 +163,7 @@ Rectangle {
             if (showMemoryAsPercent) {
               return `${SystemStatService.memPercent}%`
             } else {
-              return isVertical ? `${Math.round(SystemStatService.memGb)}G` : `${SystemStatService.memGb}G`
+              return isVertical ? `${Math.round(SystemStatService.memGb)}G` : `${SystemStatService.memGb.toFixed(1)}G`.padEnd(5)
             }
           }
           font.family: Settings.data.ui.fontFixed
